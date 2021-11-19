@@ -63,7 +63,7 @@ testpath==0.4.4
 threadpoolctl==3.0.0
 tornado==6.0.3
 traitlets==4.3.3
-typed-ast==1.4.0
+typed-ast==1.4.2
 typing_extensions==4.0.0
 uncompyle6==2.11.5
 unpy2exe==0.3
