@@ -25,6 +25,6 @@ def make_predictions(year, present_price, kms_driven, owner, fuel_type, seller_t
     prediction = rf_regressor.predict([[present_price, kms_driven, owner, year, fuel_type_diesel, fuel_type_petrol, seller_type,transmission_type]])
     output = round(prediction[0], 2)
     if output < 0:
-        return "You cannot sell this car!"
+        return "You cannot sell this vehicle!"
     else:
-        return "You can sell the car at Rs. {} lakhs".format(output)
+        return "You can sell the vehicle at Rs. {} lakhs".format(output)

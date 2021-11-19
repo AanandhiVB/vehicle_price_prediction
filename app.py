@@ -3,7 +3,6 @@ import pandas as pd
 from flask import Flask, request , make_response , render_template
 from flask_restplus import Api, Resource, fields, reqparse, Namespace
 from functions import prediction
-import requests
 import pickle
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -12,15 +11,15 @@ app = Flask(__name__)
 
 api = Api(app = app, 
 		  version = 0.1, 
-		  title = "Car Price Prediction APIs", 
-		  description = "APIs that can be used for predicting the selling price for a car based on certain parameters.")
+		  title = "Vehicle Price Prediction APIs", 
+		  description = "APIs that can be used for predicting the selling price for a vehicle based on certain parameters.")
 
-mp_api = api.namespace("price_prediction", description="Car Price Prediction APIs")
+mp_api = api.namespace("price_prediction", description="Vehicle Price Prediction APIs")
 
 carprice_model = api.model('CarPriceModel', 
 		  {"year": fields.Integer(required=True, default=2016, example=2016, description="Year"),
            "present_price": fields.Float(required=True, default=20.54, example=20.54, description="What is the showroom price? (In lakhs)"),
-           "owner": fields.Integer(required=True, default=0, example=0, description="How many owners previously owned the car(0 or 1 or 3) ?"),
+           "owner": fields.Integer(required=True, default=0, example=0, description="How many owners previously owned the vehicle(0 or 1 or 3) ?"),
            "kms_driven": fields.Integer(required=True, default=2459, example=2459, description="How many kilometers driven?"),
            "fuel_type": fields.String(required=True, description="Fuel Type", default="Petrol", example="Petrol"),
            "seller_type": fields.String(required=True, description="Seller Type", default="Dealer", example="Dealer"),
